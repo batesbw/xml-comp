@@ -1,0 +1,29 @@
+<% include ../views/partials/header %>
+
+  <div class="container" style="width: 450px;">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <a href="/"><span class="glyphicon glyphicon-cog"></span></a>
+            <h2>XML Comparison</h2>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar"></div>
+            </div>
+            <button class="btn btn-lg upload-btn" type="button">Upload File</button>
+            <p></p>
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>First File</a>
+              <a href="#" class="list-group-item list-group-item-info"><span class="badge alert-info pull-right">Waiting</span>Second File</a>
+            </div>
+            <form action="/compare" method="post" enctype="multipart/form-data">
+                <button type="submit" class="btn btn-lg btn-primary" id="js-upload-submit">Compare Files</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
+
+  <% include ../views/partials/footer %>
