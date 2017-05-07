@@ -6,8 +6,8 @@ var router = express.Router();
 router.post('/', function(req, res) {
 
    var returnJSONResults = function(baseName, queryName) {
-   var XMLPath1 = "public/tmp/Test1.xml";
-   var XMLPath2 = "public/tmp/Test2.xml";
+   var XMLPath1 = "public/tmp/xml1.xml";
+   var XMLPath2 = "public/tmp/xml2.xml";
    var xml1 = loadXMLDoc(XMLPath1);
    var xml2= loadXMLDoc(XMLPath2);
 

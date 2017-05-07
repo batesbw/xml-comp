@@ -11,6 +11,25 @@ router.use(session({
   secret: 'dDt5cr0LUSnpG0nw7U1q3Brks',
 }));
 
+router.post('/delete', function(req, res){
+console.log(req.body.xml);
+
+    if (req.body.xml == 0) {
+      var filePath = path.join(__dirname, '../public/tmp/xml1.xml');
+    } else if (req.body.xml == 1) {
+      var filePath = path.join(__dirname, '../public/tmp/xml2.xml');
+    }
+
+  fs.unlink(filePath, (err) => {
+        if (err) {
+            console.log("failed to delete local image:"+err);
+        } else {
+            console.log('successfully deleted local image');
+        }
+  });
+
+});
+
 router.post('/upload', function(req, res){
 
   // create an incoming form object
@@ -26,13 +45,15 @@ router.post('/upload', function(req, res){
        //req.session.dir = folderName;
     }
 
-  // store all uploads in the /uploads directory
   form.uploadDir = path.join(__dirname, '../public/tmp');
-
   // every time a file has been uploaded successfully,
   // rename it to it's orignal name
   form.on('file', function(field, file) {
-    fs.rename(file.path, path.join(form.uploadDir, file.name));
+    if (fs.existsSync(path.join(form.uploadDir, 'xml1.xml'))) {
+      fs.rename(file.path, path.join(form.uploadDir, 'xml2.xml'));
+    } else {
+      fs.rename(file.path, path.join(form.uploadDir, 'xml1.xml'));
+    }
   });
 
   // log any errors that occur
@@ -50,11 +71,8 @@ router.post('/upload', function(req, res){
 
 });
 
-
 router.get('/', function(req, res, next) {
-
-    res.render('index');
+   res.render('index', { xmlOne: '0', xmlTwo:  '0' });
 });
-
 
 module.exports = router;
