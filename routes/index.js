@@ -12,7 +12,6 @@ router.use(session({
 }));
 
 router.post('/delete', function(req, res){
-console.log(req.body.xml);
 
     if (req.body.xml == 0) {
       var filePath = path.join(__dirname, '../public/tmp/xml1.xml');
