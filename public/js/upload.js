@@ -49,6 +49,15 @@ $('#upload-input').on('change', function(){
             // once the upload reaches 100%, set the progress bar text to done
             if (percentComplete === 100) {
               $('.progress-bar').html('Done');
+                  if ($( "#xmlOneStatus" ).hasClass("list-group-item list-group-item-success")) {
+                    document.getElementById("xmlTwoStatus").className = "list-group-item list-group-item-success";
+                    document.getElementById("xmlTwoStatusSpan").className = "badge alert-success pull-right";
+                    document.getElementById("xmlTwoStatusSpan").innerHTML = "Success";
+                 } else {
+                    document.getElementById("xmlOneStatus").className = "list-group-item list-group-item-success";
+                    document.getElementById("xmlOneStatusSpan").className = "badge alert-success pull-right";
+                    document.getElementById("xmlOneStatusSpan").innerHTML = "Success";
+                 }
             }
 
           }
@@ -60,4 +69,51 @@ $('#upload-input').on('change', function(){
     });
 
   }
+});
+
+$("#xmlOne-btn").on('click', function (){
+  var formData = {xml:"0"}; //Array
+
+  $.ajax({
+   url : "/delete",
+   type: "POST",
+   data : formData,
+   success: function(data, textStatus, jqXHR)
+   {
+       //data - response from server
+   },
+   error: function (jqXHR, textStatus, errorThrown)
+   {
+
+   }
+  });
+
+  document.getElementById("xmlOneStatus").className = "list-group-item list-group-item-info";
+  document.getElementById("xmlOneStatusSpan").className = "badge alert-info pull-right";
+  document.getElementById("xmlOneStatusSpan").innerHTML = "Waiting";
+
+});
+
+$('#xmlTwo-btn').on('click', function (){
+  var formData = {xml:"1"}; //Array
+
+  $.ajax({
+   url : "/delete",
+   type: "POST",
+   data : formData,
+   success: function(data, textStatus, jqXHR)
+   {
+       //data - response from server
+   },
+   error: function (jqXHR, textStatus, errorThrown)
+   {
+
+   }
+
+  });
+
+  document.getElementById("xmlTwoStatus").className = "list-group-item list-group-item-info";
+  document.getElementById("xmlTwoStatusSpan").className = "badge alert-info pull-right";
+  document.getElementById("xmlTwoStatusSpan").innerHTML = "Waiting";
+
 });

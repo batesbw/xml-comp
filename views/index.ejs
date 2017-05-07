@@ -13,8 +13,16 @@
             <button class="btn btn-lg upload-btn" type="button">Upload File</button>
             <p></p>
             <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>First File</a>
-              <a href="#" class="list-group-item list-group-item-info"><span class="badge alert-info pull-right">Waiting</span>Second File</a>
+                  <a href="#" id="xmlOneStatus" class="list-group-item list-group-item-info">
+                    <span id="xmlOneStatusSpan" class="badge alert-info pull-right">Waiting</span>
+                    <button id="xmlOne-btn" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    First File
+                  </a>
+                  <a href="#" id="xmlTwoStatus" class="list-group-item list-group-item-info">
+                    <span id="xmlTwoStatusSpan" class="badge alert-info pull-right">Waiting</span>
+                    <button id="xmlTwo-btn" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    Second File
+                  </a>
             </div>
             <form action="/compare" method="post" enctype="multipart/form-data">
                 <button type="submit" class="btn btn-lg btn-primary" id="js-upload-submit">Compare Files</button>
